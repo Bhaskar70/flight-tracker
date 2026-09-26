@@ -1,0 +1,48 @@
+<section class="filters-panel" aria-label="Flight search and filters">
+  <form class="filters-form" [formGroup]="filterForm">
+    <div class="field search-field">
+      <label for="flight-callsign">Search by callsign</label>
+      <input
+        id="flight-callsign"
+        type="search"
+        formControlName="callsign"
+        placeholder="e.g. AIC202"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="field">
+      <label for="flight-status">Status</label>
+      <select id="flight-status" formControlName="status">
+        <option value="">All statuses</option>
+        <option value="Active">Active</option>
+        <option value="Delayed">Delayed</option>
+        <option value="Arrived">Arrived</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="flight-origin">Origin airport</label>
+      <select id="flight-origin" formControlName="origin">
+        <option value="">All origins</option>
+        <option *ngFor="let airport of airports" [value]="airport.code">
+          {{ airport.city }} ({{ airport.code }})
+        </option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="flight-destination">Destination airport</label>
+      <select id="flight-destination" formControlName="destination">
+        <option value="">All destinations</option>
+        <option *ngFor="let airport of airports" [value]="airport.code">
+          {{ airport.city }} ({{ airport.code }})
+        </option>
+      </select>
+    </div>
+
+    <button type="button" class="reset-button" (click)="resetFilters()">
+      Reset filters
+    </button>
+  </form>
+</section>

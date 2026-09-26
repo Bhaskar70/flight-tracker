@@ -1,0 +1,105 @@
+:host {
+  display: block;
+  min-width: 0;
+  margin-top: 12px;
+
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.filters-panel {
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.filters-form {
+  display: grid;
+  grid-template-columns: minmax(180px, 1.4fr) repeat(3, minmax(130px, 1fr)) auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.field {
+  min-width: 0;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  color: #475569;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  font: inherit;
+  font-size: 13px;
+}
+
+input,
+select {
+  width: 100%;
+  height: 42px;
+  padding: 0 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #fff;
+  color: #1e293b;
+}
+
+input::placeholder {
+  color: #64748b;
+}
+
+.reset-button {
+  min-height: 42px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  background: #f8fafc;
+  color: #334155;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.reset-button:hover {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 3px solid #2563eb;
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .filters-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .reset-button {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 560px) {
+  .filters-panel {
+    padding: 16px;
+  }
+
+  .filters-form {
+    grid-template-columns: 1fr;
+  }
+
+  .reset-button {
+    width: 100%;
+  }
+}

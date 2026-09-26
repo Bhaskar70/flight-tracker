@@ -1,0 +1,146 @@
+:host {
+  display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  min-height: 80px;
+  padding: 16px 24px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgb(15 23 42 / 4%);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.brand-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: #2563eb;
+  color: #ffffff;
+}
+
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.brand-name {
+  color: #0f172a;
+  font-size: 24px;
+  font-weight: 750;
+  line-height: 1.1;
+  letter-spacing: -0.7px;
+}
+
+.brand-name > span {
+  color: #2563eb;
+}
+
+.brand-description {
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.environment-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  background: #f8fafc;
+  color: #475569;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #64748b;
+}
+
+.divider {
+  width: 1px;
+  height: 32px;
+  background: #e2e8f0;
+}
+
+.workspace {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.workspace-icon {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #eff6ff;
+  color: #1d4ed8;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.workspace-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.workspace-name {
+  color: #1e293b;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.workspace-description {
+  color: #64748b;
+  font-size: 11px;
+}
+
+/* Small screens */
+@media (max-width: 600px) {
+  .navbar {
+    flex-wrap: wrap;
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .workspace-text,
+  .divider {
+    display: none;
+  }
+}

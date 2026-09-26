@@ -1,0 +1,121 @@
+<section class="table-panel">
+  <header class="table-header">
+    <div>
+      <h2>Flight Operations</h2>
+      <p>Select a flight to highlight its route on the map</p>
+    </div>
+
+    <span class="flight-count" role="status">
+      {{ dataSource.data.length }} flights
+    </span>
+  </header>
+
+  <div
+    class="table-scroll"
+    tabindex="0"
+    role="region"
+    aria-label="Flight operations table"
+  >
+    <table
+      mat-table
+      [dataSource]="dataSource"
+      aria-label="Filtered flights and estimated times in UTC"
+    >
+      <ng-container matColumnDef="flightNumber">
+        <th mat-header-cell *matHeaderCellDef>Flight</th>
+        <td mat-cell *matCellDef="let flight">
+          <strong>{{ flight.flightNumber }}</strong>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="callsign">
+        <th mat-header-cell *matHeaderCellDef>Callsign</th>
+        <td mat-cell *matCellDef="let flight">
+          {{ flight.callsign }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="aircraft">
+        <th mat-header-cell *matHeaderCellDef>Aircraft</th>
+        <td mat-cell *matCellDef="let flight">
+          {{ flight.aircraftType }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="origin">
+        <th mat-header-cell *matHeaderCellDef>Origin</th>
+        <td mat-cell *matCellDef="let flight">
+          <strong>{{ flight.origin.code }}</strong>
+          <span class="secondary">{{ flight.origin.city }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="destination">
+        <th mat-header-cell *matHeaderCellDef>Destination</th>
+        <td mat-cell *matCellDef="let flight">
+          <strong>{{ flight.destination.code }}</strong>
+          <span class="secondary">{{ flight.destination.city }}</span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let flight">
+          <span
+            class="status-badge"
+            [class.active]="flight.status === 'Active'"
+            [class.delayed]="flight.status === 'Delayed'"
+            [class.arrived]="flight.status === 'Arrived'"
+          >
+            {{ flight.status }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="departure">
+        <th mat-header-cell *matHeaderCellDef>Departure · UTC</th>
+        <td mat-cell *matCellDef="let flight">
+          <strong>
+            {{ flight.estimatedDepartureTime | date:'HH:mm':'UTC' }}
+          </strong>
+          <span class="secondary">
+            {{ flight.estimatedDepartureTime | date:'dd MMM yyyy':'UTC' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="arrival">
+        <th mat-header-cell *matHeaderCellDef>Arrival · UTC</th>
+        <td mat-cell *matCellDef="let flight">
+          <strong>
+            {{ flight.estimatedArrivalTime | date:'HH:mm':'UTC' }}
+          </strong>
+          <span class="secondary">
+            {{ flight.estimatedArrivalTime | date:'dd MMM yyyy':'UTC' }}
+          </span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr
+        mat-row
+        *matRowDef="let row; columns: displayedColumns"
+      ></tr>
+
+      <tr *matNoDataRow>
+        <td class="empty-state" [attr.colspan]="displayedColumns.length">
+          <strong>No flights found</strong>
+          <p>Change your search or reset the filters.</p>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <mat-paginator
+    [pageSize]="5"
+    [hidePageSize]="true"
+    [showFirstLastButtons]="true"
+    aria-label="Flight table pagination"
+  ></mat-paginator>
+</section>

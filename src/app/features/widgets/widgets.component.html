@@ -1,0 +1,48 @@
+<section
+  class="widgets"
+  aria-label="Flight statistics"
+  *ngIf="stats$ | async as stats"
+>
+  <article class="widget total">
+    <div class="widget-header">
+      <h2>Total Flights</h2>
+      <span class="widget-icon" aria-hidden="true">✈</span>
+    </div>
+
+    <p class="widget-value">{{ stats.total }}</p>
+    <p class="widget-description">All monitored flights</p>
+  </article>
+
+  <article class="widget active">
+    <div class="widget-header">
+      <h2>Active Flights</h2>
+      <span class="widget-icon" aria-hidden="true">↗</span>
+    </div>
+
+    <p class="widget-value">{{ stats.active }}</p>
+    <p class="widget-description">
+      <span class="status-dot" aria-hidden="true"></span>
+      Currently airborne
+    </p>
+  </article>
+
+  <article class="widget delayed">
+    <div class="widget-header">
+      <h2>Delayed Flights</h2>
+      <span class="widget-icon" aria-hidden="true">◷</span>
+    </div>
+
+    <p class="widget-value">{{ stats.delayed }}</p>
+    <p class="widget-description">Require attention</p>
+  </article>
+
+  <article class="widget arrived">
+    <div class="widget-header">
+      <h2>Arrived Flights</h2>
+      <span class="widget-icon" aria-hidden="true">✓</span>
+    </div>
+
+    <p class="widget-value">{{ stats.arrived }}</p>
+    <p class="widget-description">Reached destination</p>
+  </article>
+</section>

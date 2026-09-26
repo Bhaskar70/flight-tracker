@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  min-height: 100vh;
+  color: #1e293b;
+  background: #f5f7fb;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.dashboard {
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 24px;
+}
+
+.dashboard-navbar {
+  display: block;
+  margin-bottom: 28px;
+}
+
+@media (max-width: 700px) {
+  .dashboard-navbar {
+    margin-bottom: 18px;
+  }
+}
+
+.map-panel {
+  display: block;
+  position: relative;
+  min-width: 0;
+  height: 500px;
+  padding: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 700px) {
+  .map-panel {
+    height: 420px;
+  }
+
+}
