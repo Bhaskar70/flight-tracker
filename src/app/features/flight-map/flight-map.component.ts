@@ -53,7 +53,11 @@ export class FlightMapComponent implements AfterViewInit, OnDestroy {
       return;
     }
 
-    this.leaflet = await import('leaflet');
+    const leafletModule = await import('leaflet');
+
+    this.leaflet = (
+      leafletModule as unknown as { default?: typeof Leaflet }
+    ).default ?? leafletModule;
 
     if (this.destroyed) {
       return;
